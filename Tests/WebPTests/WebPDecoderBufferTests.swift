@@ -1,6 +1,6 @@
 import Foundation
+import SwiftWebP
 import Testing
-import WebP
 
 struct WebPDecoderBufferTests {
     @Test

@@ -1,8 +1,8 @@
 #if os(macOS)
 import AppKit
 import Foundation
+import SwiftWebP
 import Testing
-import WebP
 
 struct WebPEncoderMacOSTests {
     @Test

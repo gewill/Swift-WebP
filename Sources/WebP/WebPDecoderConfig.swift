@@ -1,5 +1,5 @@
 import Foundation
-import libwebp
+import WebP
 
 public struct WebPDecoderConfig: InternalRawRepresentable {
     public var input: WebPBitstreamFeatures? // Immutable bitstream features (optional)
@@ -7,21 +7,21 @@ public struct WebPDecoderConfig: InternalRawRepresentable {
     public var options: WebPDecoderOptions // Decoding options
 
     public init() throws {
-        var originConfig = libwebp.WebPDecoderConfig()
-        if libwebp.WebPInitDecoderConfig(&originConfig) == 0 {
+        var originConfig = WebP.WebPDecoderConfig()
+        if WebP.WebPInitDecoderConfig(&originConfig) == 0 {
             throw WebPError.decoderConfigInitializationFailed
         }
         self = WebPDecoderConfig(rawValue: originConfig)
     }
 
-    init(rawValue: libwebp.WebPDecoderConfig) {
-        input = WebP.WebPBitstreamFeatures(rawValue: rawValue.input)
-        output = WebP.WebPDecBuffer(rawValue: rawValue.output)
-        options = WebP.WebPDecoderOptions(rawValue: rawValue.options)
+    init(rawValue: WebP.WebPDecoderConfig) {
+        input = WebPBitstreamFeatures(rawValue: rawValue.input)
+        output = WebPDecBuffer(rawValue: rawValue.output)
+        options = WebPDecoderOptions(rawValue: rawValue.options)
     }
 
-    var rawValue: libwebp.WebPDecoderConfig {
-        let inputValue = input?.rawValue ?? libwebp.WebPBitstreamFeatures(
+    var rawValue: WebP.WebPDecoderConfig {
+        let inputValue = input?.rawValue ?? WebP.WebPBitstreamFeatures(
             width: 0,
             height: 0,
             has_alpha: 0,
@@ -29,7 +29,7 @@ public struct WebPDecoderConfig: InternalRawRepresentable {
             format: 0,
             pad: (0, 0, 0, 0, 0)
         )
-        return libwebp.WebPDecoderConfig(input: inputValue, output: output.rawValue, options: options.rawValue)
+        return WebP.WebPDecoderConfig(input: inputValue, output: output.rawValue, options: options.rawValue)
     }
 }
 
@@ -52,11 +52,11 @@ public struct WebPBitstreamFeatures: InternalRawRepresentable, Sendable {
 
     public var pad: (Int, Int, Int, Int, Int) // padding for later use
 
-    var rawValue: libwebp.WebPBitstreamFeatures {
+    var rawValue: WebP.WebPBitstreamFeatures {
         let has_alpha = hasAlpha ? 1 : 0
         let has_animation = hasAnimation ? 1 : 0
 
-        return libwebp.WebPBitstreamFeatures(
+        return WebP.WebPBitstreamFeatures(
             width: Int32(width),
             height: Int32(height),
             has_alpha: Int32(has_alpha),
@@ -66,7 +66,7 @@ public struct WebPBitstreamFeatures: InternalRawRepresentable, Sendable {
         )
     }
 
-    init(rawValue: libwebp.WebPBitstreamFeatures) {
+    init(rawValue: WebP.WebPBitstreamFeatures) {
         width = Int(rawValue.width)
         height = Int(rawValue.height)
         hasAlpha = rawValue.has_alpha != 0
@@ -195,16 +195,16 @@ public struct WebPDecBuffer: InternalRawRepresentable {
 
     var privateMemory: UnsafeMutablePointer<UInt8>? // Internally allocated memory (only when
 
-    var rawValue: libwebp.WebPDecBuffer {
+    var rawValue: WebP.WebPDecBuffer {
         let originU = switch u {
         case let .RGBA(buffer):
-            libwebp.WebPDecBuffer.__Unnamed_union_u(RGBA: buffer)
+            WebP.WebPDecBuffer.__Unnamed_union_u(RGBA: buffer)
         case let .YUVA(buffer):
-            libwebp.WebPDecBuffer.__Unnamed_union_u(YUVA: buffer)
+            WebP.WebPDecBuffer.__Unnamed_union_u(YUVA: buffer)
         }
-        // let u = colorspace.isRGBMode ? libwebp.WebPDecBuffer.__Unnamed_union_u(RGBA: u.RGBA) :
-        // libwebp.WebPDecBuffer.__Unnamed_union_u(YUVA: u.YUVA)
-        return libwebp.WebPDecBuffer(
+        // let u = colorspace.isRGBMode ? WebP.WebPDecBuffer.__Unnamed_union_u(RGBA: u.RGBA) :
+        // WebP.WebPDecBuffer.__Unnamed_union_u(YUVA: u.YUVA)
+        return WebP.WebPDecBuffer(
             colorspace: WEBP_CSP_MODE(rawValue: UInt32(colorspace.rawValue)),
             width: Int32(width),
             height: Int32(height),
@@ -215,7 +215,7 @@ public struct WebPDecBuffer: InternalRawRepresentable {
         )
     }
 
-    init(rawValue: libwebp.WebPDecBuffer) {
+    init(rawValue: WebP.WebPDecBuffer) {
         guard let colorspace = ColorspaceMode(rawValue: Int(rawValue.colorspace.rawValue)) else {
             preconditionFailure("Unexpected WebP colorspace value: \(rawValue.colorspace.rawValue)")
         }
@@ -261,12 +261,12 @@ public struct WebPDecoderOptions: InternalRawRepresentable, Sendable {
 
     public var pad: (Int, Int, Int, Int, Int) // padding for later use
 
-    var rawValue: libwebp.WebPDecoderOptions {
+    var rawValue: WebP.WebPDecoderOptions {
         let useCropping = useCropping ? 1 : 0
         let useScaling = useScaling ? 1 : 0
         let useThreads = useThreads ? 1 : 0
 
-        return libwebp.WebPDecoderOptions(
+        return WebP.WebPDecoderOptions(
             bypass_filtering: Int32(bypassFiltering),
             no_fancy_upsampling: Int32(noFancyUpsampling),
             use_cropping: Int32(useCropping),
@@ -285,7 +285,7 @@ public struct WebPDecoderOptions: InternalRawRepresentable, Sendable {
         )
     }
 
-    init(rawValue: libwebp.WebPDecoderOptions) {
+    init(rawValue: WebP.WebPDecoderOptions) {
         bypassFiltering = Int(rawValue.bypass_filtering)
         noFancyUpsampling = Int(rawValue.no_fancy_upsampling)
         useCropping = rawValue.use_cropping != 0

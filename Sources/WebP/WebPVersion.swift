@@ -1,5 +1,5 @@
 import Foundation
-import libwebp
+import WebP
 
 public struct WebPVersion: Equatable, CustomStringConvertible, Sendable {
     public let major: Int

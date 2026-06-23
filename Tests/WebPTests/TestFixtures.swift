@@ -1,6 +1,6 @@
 import Foundation
+import SwiftWebP
 import Testing
-import WebP
 
 enum TestFixtures {
     static func makeRGBAFixture(width: Int, height: Int) -> [UInt8] {

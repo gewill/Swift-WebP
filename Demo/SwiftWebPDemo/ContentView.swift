@@ -1,5 +1,5 @@
 import SwiftUI
-import WebP
+import SwiftWebP
 import UIKit
 
 struct ContentView: View {

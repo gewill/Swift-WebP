@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `WebP` adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.7.0
+
+### Changed
+
+- Migrated the underlying WebP engine dependency from `libwebp-Xcode` to `webp-spm` (v1.6.0).
+- Renamed the package name to `SwiftWebP` and target/module name to `SwiftWebP` in `Package.swift` to avoid target name conflicts with `webp-spm`.
+- Updated all source files, tests, and benchmarks to import `SwiftWebP` and qualify underlying C types with `WebP`.
+
 ## 0.6.0
 
 Git tag naming convention now removes `v` prefix.

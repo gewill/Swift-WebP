@@ -1,5 +1,5 @@
 import Foundation
-import WebP
+import SwiftWebP
 
 #if canImport(Darwin)
 import Darwin

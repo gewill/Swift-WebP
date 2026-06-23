@@ -4,29 +4,31 @@
 import PackageDescription
 
 let package = Package(
-    name: "WebP",
+    name: "SwiftWebP",
     platforms: [
         .iOS(.v13),
         .macOS(.v11),
     ],
     products: [
-        .library(name: "WebP", targets: ["WebP"]),
+        .library(name: "WebP", targets: ["SwiftWebP"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SDWebImage/libwebp-Xcode.git", from: "1.5.0"),
+        .package(url: "https://github.com/gewill/webp-spm.git", from: "1.6.0"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.58.0"),
     ],
     targets: [
         .target(
-            name: "WebP",
+            name: "SwiftWebP",
             dependencies: [
-                .product(name: "libwebp", package: "libwebp-Xcode")
+                .product(name: "WebP", package: "webp-spm"),
+                .product(name: "SharpYuv", package: "webp-spm")
             ],
+            path: "Sources/WebP",
             exclude: ["Info.plist"]
         ),
         .testTarget(
             name: "WebPTests",
-            dependencies: ["WebP"],
+            dependencies: ["SwiftWebP"],
             resources: [
                 .copy("Resources/jiro.jpg")
             ]

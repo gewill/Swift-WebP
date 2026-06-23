@@ -4,7 +4,7 @@ import Testing
 #if canImport(CoreGraphics) && canImport(CoreImage)
 import CoreGraphics
 import CoreImage
-import WebP
+import SwiftWebP
 
 struct WebPEncoderCGImageTests {
     @Test

@@ -1,6 +1,6 @@
-import libwebp
+@testable import SwiftWebP
 import Testing
-@testable import WebP
+import WebP
 
 struct WebPBridgingTests {
     @Test
@@ -21,7 +21,7 @@ struct WebPBridgingTests {
 
     @Test
     func decBufferExternalMemoryModeSemantics() throws {
-        var config = try WebP.WebPDecoderConfig()
+        var config = try SwiftWebP.WebPDecoderConfig()
         config.output.externalMemoryMode = .internalMemory
         #expect(config.output.externalMemoryMode == .internalMemory)
         #expect(config.output.rawValue.is_external_memory == 0)
@@ -37,13 +37,13 @@ struct WebPBridgingTests {
 
     @Test
     func decBufferExternalMemoryModeMapsValuesGreaterThanTwoToSlow() {
-        let rawBuffer = libwebp.WebPDecBuffer(
-            colorspace: WEBP_CSP_MODE(rawValue: UInt32(WebP.ColorspaceMode.RGBA.rawValue)),
+        let rawBuffer = WebP.WebPDecBuffer(
+            colorspace: WEBP_CSP_MODE(rawValue: UInt32(ColorspaceMode.RGBA.rawValue)),
             width: 1,
             height: 1,
             is_external_memory: 3,
-            u: libwebp.WebPDecBuffer.__Unnamed_union_u(
-                RGBA: libwebp.WebPRGBABuffer(
+            u: WebP.WebPDecBuffer.__Unnamed_union_u(
+                RGBA: WebP.WebPRGBABuffer(
                     rgba: nil,
                     stride: 4,
                     size: 4
@@ -52,7 +52,7 @@ struct WebPBridgingTests {
             pad: (0, 0, 0, 0),
             private_memory: nil
         )
-        let buffer = WebP.WebPDecBuffer(rawValue: rawBuffer)
+        let buffer = WebPDecBuffer(rawValue: rawBuffer)
         #expect(buffer.externalMemoryMode == .externalMemorySlow)
     }
 }

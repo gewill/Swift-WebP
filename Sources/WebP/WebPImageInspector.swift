@@ -1,5 +1,5 @@
 import Foundation
-import libwebp
+import WebP
 
 public enum WebPImageInspector {
     public static func inspect(_ webPData: Data) throws -> WebPBitstreamFeatures {
@@ -10,7 +10,7 @@ public enum WebPImageInspector {
     }
 
     static func inspect(_ webPData: borrowing Span<UInt8>) throws -> WebPBitstreamFeatures {
-        let cFeature = UnsafeMutablePointer<libwebp.WebPBitstreamFeatures>.allocate(capacity: 1)
+        let cFeature = UnsafeMutablePointer<WebP.WebPBitstreamFeatures>.allocate(capacity: 1)
         defer { cFeature.deallocate() }
 
         let status = try webPData.withUnsafeBytes { rawPtr -> VP8StatusCode in

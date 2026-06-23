@@ -1,5 +1,5 @@
 import Foundation
-import libwebp
+import WebP
 
 /// There's no definition of WebPDecodingError in libwebp.
 /// We map VP8StatusCode enum as WebPDecodingError instead.
@@ -164,7 +164,7 @@ public struct WebPDecoder: Sendable {
     }
 
     private func decode(_ webPData: borrowing Span<UInt8>, config: inout WebPDecoderConfig) throws {
-        var rawConfig: libwebp.WebPDecoderConfig = config.rawValue
+        var rawConfig: WebP.WebPDecoderConfig = config.rawValue
 
         try webPData.withUnsafeBytes { rawPtr in
             guard let bindedBasePtr = rawPtr.baseAddress?.assumingMemoryBound(to: UInt8.self) else {

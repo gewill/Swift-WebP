@@ -1,5 +1,5 @@
 import Foundation
-import libwebp
+import WebP
 
 /// This is customised error that describes the pattern of error causes.
 /// However, the error is unlikely to happen normally but it's still better to handle with throw-catch than fatal error.

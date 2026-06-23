@@ -1,5 +1,5 @@
 import Foundation
-import libwebp
+import WebP
 
 /// mapping from libwebp.WebPConfig
 public struct WebPEncoderConfig: InternalRawRepresentable, Sendable {
@@ -122,7 +122,7 @@ public struct WebPEncoderConfig: InternalRawRepresentable, Sendable {
     /// Apply the libwebp lossless preset levels [0...9].
     /// Higher levels spend more time searching for better compression.
     public static func losslessPreset(level: Int) throws -> WebPEncoderConfig {
-        var config = libwebp.WebPConfig()
+        var config = WebP.WebPConfig()
         guard WebPConfigInit(&config) != 0 else {
             throw WebPError.invalidWebPConfig
         }
@@ -138,7 +138,7 @@ public struct WebPEncoderConfig: InternalRawRepresentable, Sendable {
         return WebPValidateConfig(&config) != 0
     }
 
-    init(rawValue: libwebp.WebPConfig) {
+    init(rawValue: WebP.WebPConfig) {
         lossless = Int(rawValue.lossless)
         quality = rawValue.quality
         method = Int(rawValue.method)
@@ -173,18 +173,18 @@ public struct WebPEncoderConfig: InternalRawRepresentable, Sendable {
         qmax = Int(rawValue.qmax)
     }
 
-    var rawValue: libwebp.WebPConfig {
+    var rawValue: WebP.WebPConfig {
         let show_compressed = showCompressed ? Int32(1) : Int32(0)
         let emulate_jpeg_size = emulateJpegSize ? Int32(1) : Int32(0)
         let low_memory = lowMemory ? Int32(1) : Int32(0)
         let use_delta_palette = useDeltaPalette ? Int32(1) : Int32(0)
         let use_sharp_yuv = useSharpYUV ? Int32(1) : Int32(0)
 
-        return libwebp.WebPConfig(
+        return WebP.WebPConfig(
             lossless: Int32(lossless),
             quality: Float(quality),
             method: Int32(method),
-            image_hint: libwebp.WebPImageHint(rawValue: imageHint.rawValue),
+            image_hint: WebP.WebPImageHint(rawValue: imageHint.rawValue),
             target_size: Int32(targetSize),
             target_PSNR: Float(targetPSNR),
             segments: Int32(segments),
@@ -216,8 +216,8 @@ public struct WebPEncoderConfig: InternalRawRepresentable, Sendable {
     public enum Preset: Sendable {
         case `default`, picture, photo, drawing, icon, text
 
-        func webPConfig(quality: Float) -> libwebp.WebPConfig {
-            var config = libwebp.WebPConfig()
+        func webPConfig(quality: Float) -> WebP.WebPConfig {
+            var config = WebP.WebPConfig()
 
             switch self {
             case .default:
