@@ -10,7 +10,7 @@ let package = Package(
         .macOS(.v11),
     ],
     products: [
-        .library(name: "WebP", targets: ["SwiftWebP"]),
+        .library(name: "SwiftWebP", targets: ["SwiftWebP"]),
     ],
     dependencies: [
         .package(url: "https://github.com/gewill/webp-spm.git", from: "1.6.0"),
@@ -23,11 +23,10 @@ let package = Package(
                 .product(name: "WebP", package: "webp-spm"),
                 .product(name: "SharpYuv", package: "webp-spm")
             ],
-            path: "Sources/WebP",
             exclude: ["Info.plist"]
         ),
         .testTarget(
-            name: "WebPTests",
+            name: "SwiftWebPTests",
             dependencies: ["SwiftWebP"],
             resources: [
                 .copy("Resources/jiro.jpg")

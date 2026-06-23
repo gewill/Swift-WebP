@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Migrated the underlying WebP engine dependency from `libwebp-Xcode` to `webp-spm` (v1.6.0).
-- Renamed the package name to `SwiftWebP` and target/module name to `SwiftWebP` in `Package.swift` to avoid target name conflicts with `webp-spm`.
+- Renamed the package name, product name, target/module name, source directory, and test target to `SwiftWebP` to avoid target name conflicts with `webp-spm`.
 - Updated all source files, tests, and benchmarks to import `SwiftWebP` and qualify underlying C types with `WebP`.
 
 ## 0.6.0

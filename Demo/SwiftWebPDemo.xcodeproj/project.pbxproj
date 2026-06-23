@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD2308C02F4487B5002F5231 /* WebP in Frameworks */ = {isa = PBXBuildFile; productRef = FD2308BF2F4487B5002F5231 /* WebP */; };
+		FD2308C02F4487B5002F5231 /* SwiftWebP in Frameworks */ = {isa = PBXBuildFile; productRef = FD2308BF2F4487B5002F5231 /* SwiftWebP */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD2308C02F4487B5002F5231 /* WebP in Frameworks */,
+				FD2308C02F4487B5002F5231 /* SwiftWebP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +66,7 @@
 			);
 			name = SwiftWebPDemo;
 			packageProductDependencies = (
-				FD2308BF2F4487B5002F5231 /* WebP */,
+				FD2308BF2F4487B5002F5231 /* SwiftWebP */,
 			);
 			productName = SwiftWebPDemo;
 			productReference = FDB383C52C444E9B001F3852 /* SwiftWebPDemo.app */;
@@ -356,9 +356,9 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FD2308BF2F4487B5002F5231 /* WebP */ = {
+		FD2308BF2F4487B5002F5231 /* SwiftWebP */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = WebP;
+			productName = SwiftWebP;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

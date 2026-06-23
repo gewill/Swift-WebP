@@ -11,7 +11,7 @@ Swift-WebP provides Swift wrappers around `libwebp` for encoding, decoding, and 
 
 - Swift toolchain: 6.2.3 (`.swift-version`)
 - Swift language mode: 6
-- libwebp: 1.5.0+ (via `libwebp-Xcode`)
+- libwebp: 1.6.0+ (via `webp-spm`)
 - iOS deployment target: 13.0+
 - macOS deployment target: 11.0+
 
@@ -28,7 +28,14 @@ Swift-WebP provides Swift wrappers around `libwebp` for encoding, decoding, and 
 Add Swift-WebP in your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/ainame/Swift-WebP.git", from: "0.6.0")
+.package(name: "SwiftWebP", url: "https://github.com/gewill/Swift-WebP.git", from: "0.6.0")
+```
+
+Then add the `SwiftWebP` product to your target dependencies and import the
+`SwiftWebP` module.
+
+```swift
+.product(name: "SwiftWebP", package: "SwiftWebP")
 ```
 
 ## Development
@@ -65,7 +72,7 @@ Validation thresholds can be tuned with:
 ### Encoding
 
 ```swift
-import WebP
+import SwiftWebP
 
 let encoder = WebPEncoder()
 let data = try encoder.encode(
@@ -81,7 +88,7 @@ let data = try encoder.encode(
 ### Decoding to raw pixel bytes
 
 ```swift
-import WebP
+import SwiftWebP
 
 let decoder = WebPDecoder()
 var options = WebPDecoderOptions()
@@ -95,7 +102,7 @@ let rgbaData = try decoder.decode(webPData, options: options, format: .rgba)
 ### Decoding into caller-owned memory
 
 ```swift
-import WebP
+import SwiftWebP
 
 let decoder = WebPDecoder()
 var options = WebPDecoderOptions()

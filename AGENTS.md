@@ -10,7 +10,7 @@ Use this file as the execution guide for ongoing implementation and maintenance 
 - Swift toolchain: 6.2.3 (`.swift-version`), `swift-tools-version: 6.2` (`swiftLanguageModes: [.v6]`)
 - Deployment targets: iOS 13+, macOS 11+
 - Dependency:
-  - [`libwebp-Xcode`](https://github.com/SDWebImage/libwebp-Xcode.git) 1.5.0+
+  - [`webp-spm`](https://github.com/gewill/webp-spm.git) 1.6.0+
   - [`SwiftFormat`](https://github.com/nicklockwood/SwiftFormat.git) via SPM plugin
 - CI:
   - macOS build + test

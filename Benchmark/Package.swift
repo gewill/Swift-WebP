@@ -12,13 +12,13 @@ let package = Package(
         .executable(name: "WebPBench", targets: ["WebPBench"])
     ],
     dependencies: [
-        .package(name: "Swift-WebP", path: "..")
+        .package(name: "SwiftWebP", path: "..")
     ],
     targets: [
         .executableTarget(
             name: "WebPBench",
             dependencies: [
-                .product(name: "WebP", package: "Swift-WebP")
+                .product(name: "SwiftWebP", package: "SwiftWebP")
             ]
         )
     ],
