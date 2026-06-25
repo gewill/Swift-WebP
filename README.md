@@ -8,8 +8,8 @@ Swift-WebP provides Swift wrappers around `libwebp` for encoding, decoding, and 
 
 ## Notice
 
-**v0.6.0 tried modernising codebase and made minor breaking changes.**
-**See details in [CHANGELOG.md](./CHANGELOG.md)**
+**v0.7.0 renamed the package product and module to `SwiftWebP`.**
+**See [MIGRATION.md](./MIGRATION.md) and [CHANGELOG.md](./CHANGELOG.md) for upgrade notes.**
 
 ## Support Versions
 
@@ -32,7 +32,7 @@ Swift-WebP provides Swift wrappers around `libwebp` for encoding, decoding, and 
 Add Swift-WebP in your `Package.swift`:
 
 ```swift
-.package(name: "SwiftWebP", url: "https://github.com/gewill/Swift-WebP.git", from: "0.6.0")
+.package(name: "SwiftWebP", url: "https://github.com/gewill/Swift-WebP.git", from: "0.7.0")
 ```
 
 Then add the `SwiftWebP` product to your target dependencies and import the

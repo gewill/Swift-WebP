@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 
 ## 0.7.0
 
+See [MIGRATION.md](MIGRATION.md#migrating-to-070) for upgrade instructions.
+
 ### Changed
 
 - Migrated the underlying WebP engine dependency from `libwebp-Xcode` to `webp-spm` (v1.6.0).
