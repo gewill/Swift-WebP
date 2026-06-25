@@ -1,5 +1,9 @@
 # Swift-WebP
 
+> [!IMPORTANT]
+> This is an unofficial community package.
+> It is not affiliated with, endorsed by, or maintained by Google or the WebP project.
+
 Swift-WebP provides Swift wrappers around `libwebp` for encoding, decoding, and bitstream inspection.
 
 ## Notice
