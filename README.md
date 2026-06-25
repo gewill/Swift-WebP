@@ -137,6 +137,17 @@ let feature = try WebPImageInspector.inspect(webPData)
 print(feature.width, feature.height, feature.hasAlpha, feature.hasAnimation)
 ```
 
-## License
+## License and Notices
 
-Swift-WebP is available under the MIT license. See [LICENSE](LICENSE).
+Swift-WebP is available under the [MIT license](LICENSE).
+
+This project is an independent Swift wrapper around `libwebp`. WebP and
+`libwebp` are names of their respective projects and rightsholders; this
+repository does not claim ownership of those projects or imply endorsement.
+
+Third-party license references:
+
+- `webp-spm`: [MIT license](https://github.com/gewill/webp-spm/blob/main/LICENSE)
+- `libwebp` / WebP code distributed through `webp-spm`:
+  [BSD-style license](https://github.com/gewill/webp-spm/blob/main/ThirdPartyLicenses/Google-BSD-3-Clause.txt)
+  and [patent grant](https://github.com/gewill/webp-spm/blob/main/ThirdPartyLicenses/Google-Patents.txt)
