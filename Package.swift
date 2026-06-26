@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "SwiftWebP", targets: ["SwiftWebP"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/gewill/webp-spm.git", from: "1.6.0"),
+        .package(url: "https://github.com/gewill/webp-spm.git", from: "1.6.1"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.58.0"),
     ],
     targets: [

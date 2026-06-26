@@ -1,5 +1,5 @@
 {
-  "originHash" : "17b63bd80cb2b04253110ddc6c715de3668b88ffe4c624a76141c54be29d942a",
+  "originHash" : "edf255a97ffaf6c88b410920c5ad1444cb748ab30d8feebe93df98a3ac1de207",
   "pins" : [
     {
       "identity" : "swiftformat",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gewill/webp-spm.git",
       "state" : {
-        "revision" : "c5d21d16f5d7cca8fd635869410644be9dd96522",
-        "version" : "1.6.0"
+        "revision" : "942873b31aba6e7793ede689cc6b933c80ccabf6",
+        "version" : "1.6.1"
       }
     }
   ],
